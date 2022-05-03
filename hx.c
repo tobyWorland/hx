@@ -6,8 +6,8 @@
 int main(int argc, char **argv) {
 	int c;
 	FILE *input = stdin;
-	unsigned int col = 0;
-	unsigned int offset = 0;
+	unsigned short col = 0;
+	unsigned long offset = 0;
 
 	while ((c = getc(input)) != EOF) {
 		if (col == 0) {
