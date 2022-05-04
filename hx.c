@@ -49,6 +49,8 @@ int main(int argc, char **argv) {
 	  die();
 	}
 
-	putchar('\n');
+	if (col > 0)
+	  putchar('\n');
+
 	return EXIT_SUCCESS;
 }
