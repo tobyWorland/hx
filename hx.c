@@ -40,9 +40,15 @@ void dumpFromFile(FILE *f) {
     }
   }
 
-  // Add a newline if needed
-  if (col > 0)
-    putchar('\n');
+  // If we haven't reached the end of the line,
+  // pad out the remaining space so the printables for the current line can be printed.
+  if (col != 0) {
+    for ( ; col < WIDTH; col++) {
+      printf("   ");
+      printables[col] = '\0';
+    }
+    printf(" |%s\n", printables);
+  }
 }
 
 int main(int argc, char **argv) {
