@@ -1,0 +1,22 @@
+* HX
+A small hexdumper written in the C programming language. Should be portable.
+** Building
+#+begin_src shell
+  make
+#+end_src
+** Examples
+*** /dev/urandom
+#+begin_src shell
+  ./hx /dev/urandom
+#+end_src
+*** stdin
+Input can be either piped in using the shell, or the user can enter characters
+manually using their keyboard. When entering input manually hit CONTROL + D
+together to finish.
+#+begin_src shell
+  echo testing | ./hx
+#+end_src
+*** usage
+#+begin_src shell
+  ./hx --help
+#+end_src
