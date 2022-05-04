@@ -14,11 +14,35 @@ void usage(const char *program_name) {
   die();
 }
 
+void dumpFromFile(FILE *f) {
+  int c;
+  unsigned short col = 0;
+  unsigned long offset = 0;
+
+  while ((c = getc(f)) != EOF) {
+    // Print offset
+    if (col == 0) {
+      printf("0x%016x ", offset);
+    }
+
+    // Print bytes in hex
+    printf("%02x ", c);
+    offset++;
+
+    // Break line if we hit the width
+    if (col++ == WIDTH-1) {
+      putchar('\n');
+      col = 0;
+    }
+  }
+
+  // Add a newline if needed
+  if (col > 0)
+    putchar('\n');
+}
+
 int main(int argc, char **argv) {
-	int c;
 	FILE *input = stdin;
-	unsigned short col = 0;
-	unsigned long offset = 0;
 
 	if (argc > 1) {
 	  if (!strcmp(argv[1], "--help") || !strcmp(argv[1], "-h")) {
@@ -32,25 +56,12 @@ int main(int argc, char **argv) {
 	  }
 	}
 
-	while ((c = getc(input)) != EOF) {
-		if (col == 0) {
-			printf("0x%08x ", offset);
-		}
-		printf("%02x ", c);
-		offset++;
-		if (col++ == WIDTH-1) {
-			putchar('\n');
-			col = 0;
-		}
-	}
+	dumpFromFile(input);
 
 	if (fclose(input) == EOF) {
 	  perror("fclose");
 	  die();
 	}
-
-	if (col > 0)
-	  putchar('\n');
 
 	return EXIT_SUCCESS;
 }
