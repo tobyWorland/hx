@@ -6,9 +6,21 @@ A small hexdumper written in the C programming language. Should be portable.
 #+end_src
 ** Examples
 *** /dev/urandom
-#+begin_src shell
+#+begin_src shell :eval no :exports both
   ./hx /dev/urandom
 #+end_src
+#+RESULTS:
+: 0x0000000000000000 30 33 ab 5d 3d 7a 61 94 58 28 75 80 95 c8 22 55  |03.]=za.X(u..."U|
+: 0x0000000000000010 ad 3a 5a de f7 89 91 18 b6 c8 2c e6 6c d0 5e 82  |.:Z.......,.l.^.|
+: 0x0000000000000020 01 27 0e 76 c3 16 82 10 2a b6 bf 39 4d 48 e3 81  |.'.v....*..9MH..|
+: 0x0000000000000030 84 39 13 01 5e e5 71 5d db ba ad 60 74 4e 5f 5d  |.9..^.q]...`tN_]|
+: 0x0000000000000040 7a 4c 3e eb 28 15 2d a0 46 86 df 8f 06 b8 4f 5d  |zL>.(.-.F.....O]|
+: 0x0000000000000050 7d f0 b1 78 10 7e 3a 05 66 23 43 50 d9 36 d8 bc  |}..x.~:.f#CP.6..|
+: 0x0000000000000060 f5 7d d1 57 13 f1 4b df 59 95 84 32 08 67 e7 87  |.}.W..K.Y..2.g..|
+: 0x0000000000000070 34 81 8a 6a cc 8e f8 22 03 34 8a ed 20 38 44 6a  |4..j...".4.. 8Dj|
+: 0x0000000000000080 67 cc 1a 0e de 26 ae f4 4f 89 ff 12 75 93 e5 8a  |g....&..O...u...|
+: 0x0000000000000090 dd c1 5b 90 3f 4b d9 46 f3 db a6 f2 2e 25 d4 4d  |..[.?K.F.....%.M|
+
 *** stdin
 Input can be either piped in using the shell, or the user can enter characters
 manually using their keyboard. When entering input manually hit CONTROL + D
