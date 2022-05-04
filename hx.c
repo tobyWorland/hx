@@ -1,3 +1,4 @@
+#include <ctype.h> // isprint()
 #include <stdio.h> // IO
 #include <stdlib.h> // EXIT_SUCCESS constant and exit()
 #include <string.h> // strcmp()
@@ -18,6 +19,8 @@ void dumpFromFile(FILE *f) {
   int c;
   unsigned short col = 0;
   unsigned long offset = 0;
+  char printables[WIDTH];
+  printables[WIDTH] = '\0'; // Without the null terminator printf will start printing garbage from memory
 
   while ((c = getc(f)) != EOF) {
     // Print offset
@@ -27,11 +30,12 @@ void dumpFromFile(FILE *f) {
 
     // Print bytes in hex
     printf("%02x ", c);
+    printables[col] = isprint(c) ? c : '.';
     offset++;
 
     // Break line if we hit the width
     if (col++ == WIDTH-1) {
-      putchar('\n');
+      printf(" |%s|\n", printables);
       col = 0;
     }
   }
