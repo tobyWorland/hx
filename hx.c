@@ -1,6 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h> // IO
+#include <stdlib.h> // EXIT_SUCCESS constant
 
+// How many bytes to display on the same line
 #define WIDTH 0x10
 
 int main(int argc, char **argv) {
@@ -16,7 +17,7 @@ int main(int argc, char **argv) {
 		printf("%02x ", c);
 		offset++;
 		if (col++ == WIDTH-1) {
-			putchar('\n');	
+			putchar('\n');
 			col = 0;
 		}
 	}
