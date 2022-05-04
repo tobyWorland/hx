@@ -46,26 +46,26 @@ void dumpFromFile(FILE *f) {
 }
 
 int main(int argc, char **argv) {
-	FILE *input = stdin;
+  FILE *input = stdin;
 
-	if (argc > 1) {
-	  if (!strcmp(argv[1], "--help") || !strcmp(argv[1], "-h")) {
-	    usage(argv[0]);
-	  } else {
-	    input = fopen(argv[1], "r");
-	    if (!input) {
-	      perror("open");
-	      die();
-	    }
-	  }
-	}
+  if (argc > 1) {
+    if (!strcmp(argv[1], "--help") || !strcmp(argv[1], "-h")) {
+      usage(argv[0]);
+    } else {
+      input = fopen(argv[1], "r");
+      if (!input) {
+	perror("open");
+	die();
+      }
+    }
+  }
 
-	dumpFromFile(input);
+  dumpFromFile(input);
 
-	if (fclose(input) == EOF) {
-	  perror("fclose");
-	  die();
-	}
+  if (fclose(input) == EOF) {
+    perror("fclose");
+    die();
+  }
 
-	return EXIT_SUCCESS;
+  return EXIT_SUCCESS;
 }
